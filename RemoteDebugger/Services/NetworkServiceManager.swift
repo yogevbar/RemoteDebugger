@@ -69,18 +69,20 @@ class NetworkServiceManager: NSObject {
     
     func connectToPeer(peerID: MCPeerID) {
         disconnect()
-        browser?.invitePeer(peerID, to: session, withContext: nil, timeout: 120)
+        browser?.invitePeer(peerID, to: session, withContext: nil, timeout: 30)
     }
     
     func disconnect() {
         guard let peer = connectedPeer else { return }
         session.cancelConnectPeer(peer)
+        connectedPeer = nil
     }
     
     private func peerStatusChanged(peerID: MCPeerID, status: MCSessionState) {
         var peerStatus: PeerStatus
         switch status {
         case .connected:
+            connectedPeer = peerID
             peerStatus = .connected
         case .connecting:
             peerStatus = .connecting
@@ -143,6 +145,9 @@ extension NetworkServiceManager: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {        
         let peer = Peer(peerID: peerID, info: info)
         availablePeers?(peer)
+        if let connectedPeer = connectedPeer, peer.displayName == connectedPeer.displayName {
+            connectToPeer(peerID: peerID)
+        }
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
