@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -710,16 +710,78 @@
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="8tI-c0-3o2"/>
+                                <toolbarItem implicitItemIdentifier="91E945DC-1EAA-4C9C-9023-6309056EBAFC" label="clear" paletteLabel="clear" image="trash-new" sizingBehavior="auto" selectable="YES" id="kgS-Na-Lj2">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" imageHugsTitle="YES" id="VMj-rD-cxg">
+                                        <rect key="frame" x="0.0" y="14" width="33" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="trash-new" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fHN-3K-gtm">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="trashClickedWithSender:" target="IQv-IB-iLA" id="WS9-Kn-Rge"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="489E8022-3063-4CB4-A378-B88521408A31" label="Custom View" paletteLabel="Custom View" image="toggleRight" sizingBehavior="auto" selectable="YES" id="0Zy-Nb-F9t">
+                                    <nil key="toolTip"/>
+                                    <button key="view" wantsLayer="YES" verticalHuggingPriority="750" id="cGZ-Vx-m50">
+                                        <rect key="frame" x="6" y="14" width="64" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="toggleRight" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" continuous="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wxz-2f-LQO">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                        <connections>
+                                            <action selector="rightSidebarToggleClickedWithSender:" target="IQv-IB-iLA" id="W5w-jS-RsP"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="8731AD98-1142-4FCE-A2AC-D0C195BA3DFD" label="Custom View" paletteLabel="Custom View" image="toggleLeft" sizingBehavior="auto" id="iY4-j0-RJO">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="62u-em-0O8">
+                                        <rect key="frame" x="18" y="14" width="40" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="toggleLeft" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DhK-s9-nKB">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="lefttSidebarToggleClickedWithSender:" target="IQv-IB-iLA" id="O6b-1Q-nqB"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="06A6DA2B-979D-46F7-B797-13B0376AECDF" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="wzn-Eq-zd0">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="CNC-xJ-aaG">
+                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="P5c-iA-Q1i">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
+                                <toolbarItem reference="wzn-Eq-zd0"/>
+                                <toolbarItem reference="wzn-Eq-zd0"/>
+                                <toolbarItem reference="wzn-Eq-zd0"/>
                                 <toolbarItem reference="8tI-c0-3o2"/>
                                 <toolbarItem reference="XFA-LA-psS"/>
                                 <toolbarItem reference="8tI-c0-3o2"/>
+                                <toolbarItem reference="kgS-Na-Lj2"/>
+                                <toolbarItem reference="iY4-j0-RJO"/>
+                                <toolbarItem reference="0Zy-Nb-F9t"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
+                            <outlet property="leftSidebarToggle" destination="62u-em-0O8" id="zMy-Ma-B4F"/>
                             <outlet property="openButton" destination="HjK-BV-W1n" id="WCs-Gi-96q"/>
+                            <outlet property="rightSidebarToggle" destination="cGZ-Vx-m50" id="vj8-9Q-AIV"/>
                         </connections>
                     </window>
                     <connections>
@@ -727,17 +789,32 @@
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="7CT-01-IKQ"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Root Hosting Controller-->
+        <!--Tabs View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="RootHostingController" customModule="RemoteDebugger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="TabsViewController" customModule="RemoteDebugger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="F6t-kE-iSh" customClass="LYTabView" customModule="RemoteDebugger" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="F6t-kE-iSh" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="6KO-cd-MV0"/>
+                            <constraint firstAttribute="bottom" secondItem="F6t-kE-iSh" secondAttribute="bottom" id="SMG-eD-Thr"/>
+                            <constraint firstItem="F6t-kE-iSh" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Yef-P8-obm"/>
+                            <constraint firstAttribute="trailing" secondItem="F6t-kE-iSh" secondAttribute="trailing" id="bpW-CR-Ks5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tabView" destination="F6t-kE-iSh" id="Ick-nE-mLd"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -746,5 +823,8 @@
     </scenes>
     <resources>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="toggleLeft" width="18" height="14"/>
+        <image name="toggleRight" width="18" height="14"/>
+        <image name="trash-new" width="11" height="14"/>
     </resources>
 </document>

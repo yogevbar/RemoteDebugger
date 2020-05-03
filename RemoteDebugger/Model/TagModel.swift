@@ -13,4 +13,5 @@ struct TagModel: Identifiable, Decodable {
     /// unique id
     var id: String = UUID().uuidString
     let tag: Tag
+    let count: Int
 }

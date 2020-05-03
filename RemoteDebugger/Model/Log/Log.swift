@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum DeveloperDataType {
+    case network(newtorkData: HTTPNetworkRequestData)
+    case unknown
+}
+
 /** Contains all the already parsed and formatted log info */
 public struct Log: Identifiable {
     
@@ -42,7 +47,10 @@ public struct Log: Identifiable {
     var timestamp: TimeInterval
     
     /** Any data that the developer wishes recorded as well */
-    var developerData: String
+    var developerData: Data
+    
+    /** Developer data type, for example network, analytics */
+    var developerDataType: DeveloperDataType = .unknown
     
     /** The type of the destination */
     var destinationType: DestinationOptionSet
@@ -52,10 +60,13 @@ public struct Log: Identifiable {
         return Date(timeIntervalSince1970: timestamp)
     }
     
+    /** Network info */
+//    var networkInfo: HTTPNetworkRequestData?
+    
     /** Initializer for logger */
     public init(id: String, message: String, level: Level, tags: [Tag],
                 function: StaticString, file: StaticString, line: Int, thread: String,
-                date: Date, developerData: String = "", destinationType: DestinationOptionSet = .console) {
+                date: Date, developerData: Data = Data(), destinationType: DestinationOptionSet = .console) {
         self.id = id
         self.message = message
         self.level = level
@@ -67,7 +78,7 @@ public struct Log: Identifiable {
         self.tags = tags
         self.developerData = developerData
         self.destinationType = destinationType
-        self.tagsList = tags.map { TagModel(tag: $0) }
+        self.tagsList = tags.map { TagModel(tag: $0, count: 1) }
     }
 }
 
@@ -111,9 +122,10 @@ extension Log: Codable {
         thread = try container.decode(String.self, forKey: .thread)
         timestamp = try container.decode(TimeInterval.self, forKey: .timestamp)
         tags = try container.decode([Tag].self, forKey: .tags)
-        developerData = try container.decode(String.self, forKey: .developerData)
+        developerData = try container.decode(Data.self, forKey: .developerData)
         destinationType = try container.decode(DestinationOptionSet.self, forKey: .destinationType)
-        tagsList = tags.map { TagModel(tag: $0) }
+        tagsList = tags.map { TagModel(tag: $0, count: 1) }
+        developerDataType = logDeveloperDataType(developerData: developerData)
     }
     
     // MARK: - Encodable
@@ -153,13 +165,13 @@ extension Log: Printable {
         let string =
         """
         Message: \(message)
-        Developer Data: \(developerData)
         Tags: \(tags)
         File:\n\(file)
         Function:\n\(function)
         Line: \(line)
         Thread: \(thread)
         Time:\n\(dateDescription)
+        Developer Data: \(developerData.prettyJson())
         """
         return prettyFormat(string: string)
     }
@@ -186,5 +198,29 @@ extension Log: CustomStringConvertible {
         \(description[0])
         \(description[1])
         """
+    }
+}
+
+extension Log {
+    private func logDeveloperDataType(developerData: Data) -> DeveloperDataType {
+        do {
+            let decoder = JSONDecoder()
+            let data = try decoder.decode(HTTPNetworkRequestData.self, from: developerData)
+            return .network(newtorkData: data)
+        }
+        catch {
+            return .unknown
+        }
+    }
+}
+
+extension Array where Element == Log {
+    func filters(levels: [Level], tags: [Tag], searchKey: String, hiddenLogs: Set<String>) -> [Log] {
+        return filter{
+            (levels.isEmpty || levels.contains($0.level)) &&
+                (tags.isEmpty || tags.allSatisfy($0.tags.contains)) &&
+                (searchKey .isEmpty || $0.description.contains(searchKey)) &&
+                !hiddenLogs.contains($0.id)
+        }
     }
 }

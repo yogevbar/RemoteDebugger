@@ -12,4 +12,9 @@ extension Notification.Name {
     static let peerConnected = Notification.Name("peerConnected")
     static let peerDisconnected = Notification.Name("peerDisconnected")
     static let peerConnecting = Notification.Name("peerConnecting")
+    static let cleanLogs = Notification.Name("cleanLogs")
+    static let leftSidebarToggle = Notification.Name("leftSidebarToggle")
+    static let rightSidebarToggle = Notification.Name("rightSidebarToggle")
+    static let rightSidebarEnabled = Notification.Name("rightSidebarEnabled")    
+    static let leftSidebarEnabled = Notification.Name("leftSidebarEnabled")
 }

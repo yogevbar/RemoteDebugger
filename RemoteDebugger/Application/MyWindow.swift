@@ -8,10 +8,18 @@
 
 import Cocoa
 import SwiftUI
+import Combine
 
 class MyWindow: NSWindow {
     
     @IBOutlet weak var openButton: NSButton!
+    @IBOutlet weak var rightSidebarToggle: NSButton! {
+        didSet {
+            rightSidebarToggle.isEnabled = false
+        }
+    }
+    @IBOutlet weak var leftSidebarToggle: NSButton!
+    
     var popOver: NSPopover?
     
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
@@ -19,6 +27,8 @@ class MyWindow: NSWindow {
         NotificationCenter.default.addObserver(self, selector: #selector(peerConnected(notification:)), name: .peerConnected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(peerDisconnected(notification:)), name: .peerDisconnected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(peerConnecting(notification:)), name: .peerConnecting, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rightSideEnabled(notification:)), name: .rightSidebarEnabled, object: nil)
+        toolbar?.showsBaselineSeparator = false
     }
     
     private func setupPopOver() {
@@ -60,5 +70,33 @@ class MyWindow: NSWindow {
         popOver?.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxY)
         
     }
+    
+    @IBAction func trashClicked(sender: NSButton) {
+        NotificationCenter.default.post(name: .cleanLogs, object: nil)
+    }
+    
+    @IBAction func rightSidebarToggleClicked(sender: NSButton) {
+        let toggle = Toggles(toggle: sender.state == .on)
+        NotificationCenter.default.post(name: .rightSidebarToggle, object: toggle)
+    }
+    
+    @IBAction func lefttSidebarToggleClicked(sender: NSButton) {
+        let toggle = Toggles(toggle: sender.state == .on)        
+        NotificationCenter.default.post(name: .leftSidebarToggle, object: toggle)
+    }
 
+    @objc func rightSideEnabled(notification: Notification) {
+        guard let toggle = notification.object as? Toggles else {
+            return
+        }
+        
+        rightSidebarToggle.isEnabled = toggle.toggle
+        rightSidebarToggle.setNextState()        
+        NotificationCenter.default.post(name: .rightSidebarToggle, object: toggle)
+    }
 }
+
+struct Toggles {
+    var toggle: Bool
+}
+

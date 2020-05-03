@@ -27,14 +27,7 @@ struct AppSelectionView: View {
             } else {
                 HStack {
                     ForEach(viewModel.peers) { peer in
-                        VStack {
-                            ZStack(alignment: .bottomTrailing) {
-                                AppIcon(userStatus: peer.status, image: peer.appIcon)
-                            }                                                        
-                            Text(peer.displayName)
-                        }.onTapGesture {
-                            self.viewModel.connectToPeer(peer: peer)                            
-                        }
+                        PeerView(peer: peer)
                     }
                 }
             }

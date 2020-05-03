@@ -9,14 +9,19 @@
 import Foundation
 import MultipeerConnectivity
 
-class Peer: Identifiable {
+class Peer: Identifiable, ObservableObject {
     
     let peerID: MCPeerID
     let displayName: String
     let id: String = UUID.random
     let info: [String: String]?
     var appIcon: NSImage?
-    var status: PeerStatus = .disconnected
+    
+    @Published var status: PeerStatus = .disconnected {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     
     init(displayName: String) {
         self.peerID = MCPeerID(displayName: displayName)

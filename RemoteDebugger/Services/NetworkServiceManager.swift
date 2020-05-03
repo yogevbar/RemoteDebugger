@@ -94,15 +94,25 @@ class NetworkServiceManager: NSObject {
         peerStatusChange?(peerID.displayName, peerStatus)
     }
     
-    func decodeMessage(data: Data) {
-        let decoder = JSONDecoder()
+    private func decodeMessage(data: Data) {
+        let decoder = JSONDecoder()    
         do {
-            let obj = try decoder.decode(Message.self, from: data)
+            let obj = try decoder.decode(InputMessage.self, from: data)
             DispatchQueue.main.async {
                 self.messageRecived?(obj)
             }
         } catch {
             print("decoding error: \(error.localizedDescription)")
+        }
+    }
+    
+    func send<T: Encodable>(message: T) {
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(message)
+            try session.send(data, toPeers: session.connectedPeers, with: .reliable)
+        } catch {
+            print("send error: \(error.localizedDescription)")
         }
     }
 }

@@ -15,34 +15,63 @@ struct LevelModel {
 
 struct LeftMenu: View {
     
-    @EnvironmentObject private var logsManager: LogsManager
+    @EnvironmentObject private var session: SessionViewModel
+    @EnvironmentObject private var oldSessionsManager: OldSessionsManager
+    
+    @State private var showLevels = true
+    @State private var showTags = true
+    
+    @State private var showSessions = true
+    
+    var openSession: (_ sessionId: String) -> Void
+    
+    let leadingSpace: CGFloat = 18
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            Text("Level")
-                .font(.caption)
-                .padding(.bottom, 2)
-            LevelView(isSelected: logsManager.selectedLevels.isEmpty, title: "all", color: Color.white)
-            .onTapGesture {
-                    self.levelSelected(level: nil)
+        VStack(alignment: .leading, spacing: 8) {
+            
+            //MARK: Levels
+            MenuSectionHeader(showSection: $showLevels, title: "Level", image: "levels")
+            
+            if showLevels {
+                Levels(levels: Level.allCases, selectedLevels: session.selectedLevels) { level in
+                    self.session.addLevel(level: level)
+                }                                
             }
-            ForEach(Level.allCases, id: \.name) { level in
-                LevelView(isSelected: self.logsManager.selectedLevels.contains(level), title: level.name, color: Color(level.name))
-                    .onTapGesture {
-                        self.levelSelected(level: level)
+                        
+            //MARK: Tags
+            if !session.tags.isEmpty {
+                MenuSectionHeader(showSection: $showTags, title: "Tags", image: "tag")
+                .padding(.top, 10)
+                if showTags {
+                    Tags(tags: session.tags, selectedTags: session.selectedTags) { tag in
+                        self.session.addTagFilter(tag: tag)
+                    }
+                }
+            }
+            
+            //MARK: Sessions
+            if !oldSessionsManager.oldSessions.isEmpty {
+                MenuSectionHeader(showSection: $showSessions, title: "Previous Session", image: "history")
+                    .padding(.top, 10)
+                if showSessions {
+                    ForEach(oldSessionsManager.oldSessions, id: \.id) { item in
+                        Text(item.stringDate())
+                        .onTapGesture {
+                            self.openSession(item.id)
+                        }
+                    }
+                    .padding(.leading, leadingSpace)
                 }
             }
         }
     }
-    
-    private func levelSelected(level: Level?) {
-        logsManager.addLevel(level: level)
-    }
+
     
 }
 
 struct LeftMenu_Previews: PreviewProvider {
     static var previews: some View {
-        LeftMenu()
+        LeftMenu(openSession: { _ in })
     }
 }

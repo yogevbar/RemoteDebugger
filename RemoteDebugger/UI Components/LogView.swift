@@ -11,8 +11,7 @@ import SwiftUI
 struct LogView: View {
     
     let log: Log
-    @State private var collapse = false
-    @Binding var currentLog: Log?
+    @EnvironmentObject private var session: SessionViewModel
     
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
@@ -37,28 +36,17 @@ struct LogView: View {
                             .font(.caption)
                         HStack {
                             ForEach(log.tagsList, id: \.id) { item in
-                                TagView(title: item.tag.name, isSelected: false)
+                                TagView(title: item.tag.name, isSelected: false, count: 0)
                             }.id(UUID())
                         }
                     }
                     .padding([.top, .bottom], 8)
                     .padding([.trailing])
                 }
-                if collapse {
-                    Divider()
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("More Info...")
-                        Text("More Info...")
-                        Text("More Info...")
-                        Text("More Info...")
-                        Text("More Info...")
-                    }
-                    .padding()
-                }
             }
         }
             
-        .background(Color("logBackground"))
+        .background(Color(log == session.selectedLog ? "selectedLevelBackground" : "logBackground"))
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
@@ -66,20 +54,20 @@ struct LogView: View {
         )
             .padding([.leading, .trailing], 15)
             .onTapGesture { self.selectDeselect(self.log) }
-            .animation(.linear(duration: 0.2))
+//            .animation(.linear(duration: 0.2))
     }
     
     func selectDeselect(_ log: Log) {
-        if currentLog == log {
-            currentLog = nil
+        if session.selectedLog == log {
+            session.selectedLog = nil
         } else {
-            currentLog = log
+            session.selectedLog = log
         }
     }
 }
 
 struct LogView_Previews: PreviewProvider {
     static var previews: some View {        
-        LogView(log: Log(id: "asasdasd", message: "test", level: .verbose, tags: [.cache, .network], function: "doSomething()", file: "SomeFile.swift", line: 1, thread: "", date: Date()), currentLog: .constant(nil))
+        LogView(log: Log(id: "asasdasd", message: "test", level: .verbose, tags: [.cache, .network], function: "doSomething()", file: "SomeFile.swift", line: 1, thread: "", date: Date()))
     }
 }

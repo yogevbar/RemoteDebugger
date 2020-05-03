@@ -10,24 +10,19 @@ import SwiftUI
 
 struct TagsList: View {
     
-    @EnvironmentObject private var logsManager: LogsManager
+    @EnvironmentObject private var session: SessionViewModel
     
     var body: some View {
-        HStack {
-            Text(logsManager.tags.isEmpty ? "" : "Tags")
-                .fontWeight(.bold)
-            if !logsManager.tags.isEmpty {
-            ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top, spacing: 10) {
-                        ForEach(logsManager.tags, id: \.id) { item in
-                            TagView(title: item.tag.name, isSelected: self.logsManager.selectedTags.contains(item.tag))
-                                .onTapGesture {
-                                    self.logsManager.addTag(tag: item.tag)
-                            }
+        VStack(alignment: .leading) {
+            if !session.tags.isEmpty {
+                ScrollView(.vertical, showsIndicators: true) {
+                    ForEach(session.tags, id: \.id) { item in
+                        TagView(title: item.tag.name, isSelected: self.session.selectedTags.contains(item.tag), count: item.count)
+                            .onTapGesture {
+                                self.session.addTagFilter(tag: item.tag)
                         }
                     }
                 }
-                .padding(.trailing, 15)
             }
         }
         .padding(.leading, 15)

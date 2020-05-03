@@ -33,7 +33,8 @@ struct LogsTestData {
             file: "SomeFile.swift",
             line: 1,
             thread: "main",
-            date: Date()
+            date: Date(),
+            developerData: Data()
         )
     }
 }

@@ -29,7 +29,7 @@ class PeersManager: ObservableObject {
     
     func connectToPeer(peer: Peer) {
         guard peer.status != .connected && peer.status != .connecting else { return }
-        peer.status = .connecting
+    
         objectWillChange.send()
         NotificationCenter.default.post(name: .peerConnecting, object: nil)
         networking.connectToPeer(peerID: peer.peerID)
@@ -38,6 +38,8 @@ class PeersManager: ObservableObject {
     private func peerConnected(peer: Peer) {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .peerConnected, object: peer)
+            let message = OutputMessage(type: .sendSessionsList)
+            self.networking.send(message: message)
         }
     }
     
@@ -68,6 +70,10 @@ class PeersManager: ObservableObject {
         
         if status == .connected {
             peerConnected(peer: peer)
+        }
+        
+        if status == .disconnected {
+            peerDisconnected()
         }
         
         DispatchQueue.main.async {

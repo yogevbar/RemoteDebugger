@@ -11,8 +11,8 @@ import SwiftUI
 struct AppIcon: View {
     
     var userStatus: PeerStatus
-    @State var image: NSImage?
-        
+    @State var image: NSImage?    
+    
     var body: some View {
         
         print(userStatus)

@@ -16,10 +16,13 @@ struct AppIconImage: View {
         ZStack {
             if image != nil {
                 Image(nsImage: image!)
+                .resizable()
+                .frame(width: 64, height: 64)
             } else {
                 Image("noIcon")
+                .resizable()
+                .frame(width: 64, height: 64)
             }
         }
-        
     }
 }

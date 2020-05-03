@@ -21,17 +21,30 @@ public struct HTTPNetworkRequestData: Codable {
     /** Headers of the request */
     public let headerFields: [String: String]
     
+    /** Status code */
+    public let statusCode: Int
+    
     /** Body of the request */
     public let body: Data?
+    
+    /** The data from the response */
+    public let data: Data?
+    
+    /** Response error */
+    public let error: String?
+    
     
     // MARK: - Setup
     
     /** Initialize with URLRequest object */
-    public init(request: URLRequest, extractHeaderFields: Bool = true, extractBody: Bool = true) {
+    public init(request: URLRequest, response: URLResponse?, data: Data?, error: Error?, extractHeaderFields: Bool = true, extractBody: Bool = true) {
         method = request.httpMethod ?? "unspecified"
         url = request.url
         headerFields = extractHeaderFields ? request.allHTTPHeaderFields ?? [:] : [:]
         body = extractBody ? request.httpBody : nil
+        self.data = data
+        self.statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+        self.error = error?.localizedDescription ?? nil
     }
 }
 
