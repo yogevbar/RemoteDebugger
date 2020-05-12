@@ -12,7 +12,7 @@ import Combine
 class SessionManager: ObservableObject {
     
     // MARK: Privates
-    private let networking = NetworkServiceManager.shared
+    private let networking = NearbySession.instance
     
     // MARK: Subjects
     var openSession = CurrentValueSubject<SessionViewModel?, Never>(nil)
@@ -21,13 +21,12 @@ class SessionManager: ObservableObject {
     
     init() {
         initClousers()
-        networking.startScanForConnection()
     }
     
     private func createOpenSession(sessionInfo: SessionInfo?) {
         guard let sessionInfo = sessionInfo else { return }
         let session = SessionViewModel(sessionDetails: sessionInfo)
-        guard let current = openSession.value else {
+        guard let current = openSession.value, current.sessionDetails.identifier == sessionInfo.identifier else {
             openSession.send(session)
             return
         }
@@ -40,30 +39,36 @@ class SessionManager: ObservableObject {
         oldSessionDetails.send(session)
     }
     
-    private func messageRecived(message: Codable) {
-        guard let message = message as? InputMessage else { return }
+    private func messageRecived(message: Message) {
         switch message.type {
-        case .log:
-            openSession.value?.addLog(log: message.log)
-        case .oldSessions:
-            oldSessionsInfo.send(message.prevSessionsDetails ?? [])
-        case .openSession:
-            createOpenSession(sessionInfo: message.sessionInfo)
-        case .archive:
-            createOldSession(sessionInfo: message.sessionInfo)
+        case .logWithLogInfo:
+            openSession.value?.addLog(log: message.payload as? Log)
+        case .archiveSessionsWithPrevSessionsDetails:
+            updateArchivedSessionsInfo(archivedSessions: message.payload as! [SessionPresentableInfo])
+        case .archiveSessionWithSession:
+            createOldSession(sessionInfo: message.payload as? SessionInfo)
+        case .startSessionWithSession:
+            createOpenSession(sessionInfo: message.payload as? SessionInfo)
+        default:
+            break
         }
     }
     
+    private func updateArchivedSessionsInfo(archivedSessions: [SessionPresentableInfo]) {
+        let archive = archivedSessions.filter { $0.date != openSession.value?.sessionDetails.sessionStartDate }
+        oldSessionsInfo.send(archive)
+    }
+    
     func openOldSession(sessionId: String) {
-        let message = OutputMessage(type: .sendSession, sessionId: sessionId)
-        networking.send(message: message)
+        let message = Message(type: .archiveSessionWithIdCommand, payload: sessionId)
+        networking.sendToAll(message: message)
     }
 }
 
 extension SessionManager {
     private func initClousers() {
-        networking.messageRecived = { [weak self] (message: Codable) in
-            self?.messageRecived(message: message)
+        networking.addReciveMessageHandler { (message, device) in
+            self.messageRecived(message: message)
         }
     }
 }

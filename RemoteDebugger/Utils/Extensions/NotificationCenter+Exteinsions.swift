@@ -17,4 +17,6 @@ extension Notification.Name {
     static let rightSidebarToggle = Notification.Name("rightSidebarToggle")
     static let rightSidebarEnabled = Notification.Name("rightSidebarEnabled")    
     static let leftSidebarEnabled = Notification.Name("leftSidebarEnabled")
+    static let peerDetected = Notification.Name("peerDetected")
+    static let noPeersDetection = Notification.Name("noPeersDetection")
 }

@@ -684,7 +684,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="MainWindow" customModule="RemoteDebugger" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="IQv-IB-iLA" customClass="MyWindow" customModule="RemoteDebugger" customModuleProvider="target">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -693,19 +693,19 @@
                         <value key="minFullScreenContentSize" type="size" width="480" height="270"/>
                         <toolbar key="toolbar" implicitIdentifier="CBCAA2B2-D88F-45D7-9D93-D74C820CB532" centeredItem="XFA-LA-psS" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="3XM-dL-kMF">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="613E8B4A-CD7F-4D13-89AE-A589E1489267" explicitItemIdentifier="appSelection" label="open" paletteLabel="open" image="NSRefreshTemplate" selectable="YES" id="XFA-LA-psS">
+                                <toolbarItem implicitItemIdentifier="613E8B4A-CD7F-4D13-89AE-A589E1489267" explicitItemIdentifier="appSelection" label="open" paletteLabel="open" selectable="YES" id="XFA-LA-psS">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="94" height="24"/>
                                     <size key="maxSize" width="550" height="43"/>
-                                    <button key="view" verticalHuggingPriority="750" id="HjK-BV-W1n">
+                                    <button key="view" verticalHuggingPriority="750" id="HjK-BV-W1n" customClass="ProgressButton" customModule="RemoteDebugger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14" width="178" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" title="Choose an app to debug" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="trailing" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2TD-7a-IxA">
+                                        <buttonCell key="cell" type="roundTextured" title="Choose an app to debug" bezelStyle="texturedRounded" imagePosition="trailing" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2TD-7a-IxA">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="openAppSelectionWithSender:" target="IQv-IB-iLA" id="M6R-pr-Hgh"/>
+                                            <action selector="openAppSelectionWithSender:" target="B8D-0N-5wS" id="taw-EM-gkc"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -720,7 +720,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="trashClickedWithSender:" target="IQv-IB-iLA" id="WS9-Kn-Rge"/>
+                                            <action selector="trashClickedWithSender:" target="B8D-0N-5wS" id="s8t-hf-Def"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -729,13 +729,12 @@
                                     <button key="view" wantsLayer="YES" verticalHuggingPriority="750" id="cGZ-Vx-m50">
                                         <rect key="frame" x="6" y="14" width="64" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="toggleRight" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" continuous="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wxz-2f-LQO">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="toggleRight" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" continuous="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wxz-2f-LQO">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
-                                        <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                         <connections>
-                                            <action selector="rightSidebarToggleClickedWithSender:" target="IQv-IB-iLA" id="W5w-jS-RsP"/>
+                                            <action selector="rightSidebarToggleClickedWithSender:" target="B8D-0N-5wS" id="gMp-Pg-oMw"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -744,12 +743,12 @@
                                     <button key="view" verticalHuggingPriority="750" id="62u-em-0O8">
                                         <rect key="frame" x="18" y="14" width="40" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="toggleLeft" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DhK-s9-nKB">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="toggleLeft" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" continuous="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DhK-s9-nKB">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="lefttSidebarToggleClickedWithSender:" target="IQv-IB-iLA" id="O6b-1Q-nqB"/>
+                                            <action selector="lefttSidebarToggleClickedWithSender:" target="B8D-0N-5wS" id="NJF-vq-PmX"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -779,12 +778,13 @@
                         </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
-                            <outlet property="leftSidebarToggle" destination="62u-em-0O8" id="zMy-Ma-B4F"/>
-                            <outlet property="openButton" destination="HjK-BV-W1n" id="WCs-Gi-96q"/>
-                            <outlet property="rightSidebarToggle" destination="cGZ-Vx-m50" id="vj8-9Q-AIV"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="clearContent" destination="VMj-rD-cxg" id="8RU-9u-Rqy"/>
+                        <outlet property="leftSidebarToggle" destination="62u-em-0O8" id="7nb-nX-QBg"/>
+                        <outlet property="openButton" destination="HjK-BV-W1n" id="ySo-Cg-WJb"/>
+                        <outlet property="rightSidebarToggle" destination="cGZ-Vx-m50" id="K6L-hI-Dni"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
@@ -822,7 +822,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="toggleLeft" width="18" height="14"/>
         <image name="toggleRight" width="18" height="14"/>
         <image name="trash-new" width="11" height="14"/>

@@ -12,11 +12,13 @@ struct LogView: View {
     
     let log: Log
     @EnvironmentObject private var session: SessionViewModel
+    @EnvironmentObject private var toolBarManager: ToolBarManager
     
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             RoundedRectangle(cornerRadius: 4)
-                .fill(Color(log.level.name))
+                .fill(
+                    LinearGradient(gradient: Gradient(colors: [Color("\(log.level.name)-start"), Color("\(log.level.name)-end")]), startPoint: .top, endPoint: .bottom))
                 .frame(width: 6, alignment: .leading)
                 .padding([.leading, .trailing], 8)
                 .padding([.top, .bottom], 6)
@@ -63,6 +65,7 @@ struct LogView: View {
         } else {
             session.selectedLog = log
         }
+        toolBarManager.rightViewIsEnabled.send(session.selectedLog != nil)
     }
 }
 

@@ -12,12 +12,13 @@ struct LevelView: View {
     
     var isSelected: Bool
     let title: String
-    let color: Color
+    let startColor: Color
+    let endColor: Color
     
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 4)
-                .fill(color)
+                .fill(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .top, endPoint: .bottom))
                 .frame(width: 15, height: 15)
             Text(title.uppercased())            
                 .fontWeight(.regular)
@@ -32,6 +33,6 @@ struct LevelView: View {
 
 struct Level_Previews: PreviewProvider {
     static var previews: some View {
-        LevelView(isSelected: false, title: "ALL", color: .white)
+        LevelView(isSelected: false, title: "ALL", startColor: .red, endColor: .pink)
     }
 }

@@ -58,8 +58,7 @@ struct NetworkLogDetailsView: View {
             
             if network.data != nil {
                 Section(header: LogDetailsHeaderView(title: Keys.Sections.responseBody)){
-                    MacEditorTextView(text: network.data!.prettyJson(), isEditable: false, font: .systemFont(ofSize: 12))
-                    .frame(minHeight: 200)
+                    MacEditorTextView(text: network.data!.prettyJson(), isEditable: false, font: .systemFont(ofSize: 12))                  
                 }
             }
         }

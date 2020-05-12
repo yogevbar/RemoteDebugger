@@ -10,31 +10,36 @@ import SwiftUI
 
 struct PeerView: View {
             
-    @ObservedObject private var viewModel = PeersManager()
+    @EnvironmentObject var peersManager: PeersManager
     @State private var hover = false
-    @State var peer: Peer
+    @State var peer: NearbyDevice
     
     var body: some View {
-        VStack {
+        HStack {
             ZStack(alignment: .bottomTrailing) {
-                AppIcon(userStatus: peer.status, image: peer.appIcon)
+                AppIcon(userStatus: peer.state, image: peer.appInfo?.appIcon)
             }
             Text(peer.displayName)
+            Spacer()
         }
+            .onAppear {
+                self.hover = false
+            }
+            .onHover { isHovered in
+                self.hover = isHovered
+                print("hover: \(self.hover)")
+            }
         .padding(8)
         .background(self.hover ? Color.black.opacity(0.1) : Color.clear)
         .cornerRadius(8)
         .onTapGesture {
-            self.viewModel.connectToPeer(peer: self.peer)
-        }
-        .onHover {_ in
-            self.hover.toggle()
+            self.peersManager.connectToPeer(peer: self.peer)
         }
     }
 }
 
-struct PeerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PeerView(peer: Peer(displayName: "test"))
-    }
-}
+//struct PeerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PeerView(peer: Peer(displayName: "test"))
+//    }
+//}

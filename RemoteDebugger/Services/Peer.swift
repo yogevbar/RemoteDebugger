@@ -9,55 +9,61 @@
 import Foundation
 import MultipeerConnectivity
 
-class Peer: Identifiable, ObservableObject {
-    
-    let peerID: MCPeerID
-    let displayName: String
-    let id: String = UUID.random
-    let info: [String: String]?
-    var appIcon: NSImage?
-    
-    @Published var status: PeerStatus = .disconnected {
-        didSet {
-            objectWillChange.send()
-        }
-    }
-    
-    init(displayName: String) {
-        self.peerID = MCPeerID(displayName: displayName)
-        self.displayName = displayName
-        self.info = nil
-    }
-    
-    init(peerID: MCPeerID, info: [String: String]?) {
-        self.peerID = peerID
-        self.displayName = peerID.displayName
-        self.info = info        
-        if let info = info {
-            assambleAppIcon(info: info)
-        }
-    }
-}
-
-
-extension Peer {
-    func assambleAppIcon(info: [String: String]) {
-        
-        var stringArray = Array(repeating: "", count: info.count)
-        
-        for (key, value) in info {
-            if key.contains("icon_") {
-                let index = Int(key.replacingOccurrences(of: "icon_", with: ""))!
-                stringArray[index] = value
-            }
-        }
-
-        let base64 = stringArray.joined()
-        guard let decodedData = Data(base64Encoded: base64, options: .ignoreUnknownCharacters) else {
-            return
-        }
-        
-        appIcon = NSImage(data: decodedData)
-        
-    }
-}
+//class Peer: Identifiable {
+//    
+//    static func == (lhs: Peer, rhs: Peer) -> Bool {
+//        return lhs.peerID == rhs.peerID
+//    }
+//    
+//    let peerID: MCPeerID
+//    let displayName: String
+//    let id: String = UUID.random
+//    let info: [String: String]?
+//    var appIcon: NSImage?
+//    
+//    var status: PeerStatus = .disconnected
+//    
+//    init(displayName: String) {
+//        self.peerID = MCPeerID(displayName: displayName)
+//        self.displayName = displayName
+//        self.info = nil
+//    }
+//    
+//    init(peerID: MCPeerID, info: [String: String]?) {
+//        self.peerID = peerID
+//        self.displayName = peerID.displayName
+//        self.info = info        
+//        if let info = info {
+//            assambleAppIcon(info: info)
+//        }
+//    }
+//}
+//
+//
+//extension Peer {
+//    func assambleAppIcon(info: [String: String]) {
+//        
+//        var stringArray = Array(repeating: "", count: info.count)
+//        
+//        for (key, value) in info {
+//            if key.contains("icon_") {
+//                let index = Int(key.replacingOccurrences(of: "icon_", with: ""))!
+//                stringArray[index] = value
+//            }
+//        }
+//
+//        let base64 = stringArray.joined()
+//        guard let decodedData = Data(base64Encoded: base64, options: .ignoreUnknownCharacters) else {
+//            return
+//        }
+//        
+//        appIcon = NSImage(data: decodedData)
+//        
+//    }
+//}
+//
+//extension Peer: Hashable {
+//    public func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
+//}

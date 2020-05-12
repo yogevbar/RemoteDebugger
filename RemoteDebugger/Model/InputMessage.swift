@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum InputMessageType: String, Codable {
+public enum InputMessageType: String, Codable {
     case log
     case archive
     case oldSessions
     case openSession
 }
 
-struct InputMessage: Codable {
+public struct InputMessage: Codable {
     let type: InputMessageType
     var log: Log? = nil
     var cached: [Log]? = nil

@@ -21,32 +21,14 @@ public protocol BundleDataProtocol {
     
     /** Raw bundle name (human readable) */
     var name: String { get }
+    
+    /** Raw bundle app icon */
+    var appIcon: Data { get }
 }
 
 /** Contains relevant info about the target */
 public struct AppInfo: Codable {
-    
-    // MARK: Types
-    
-    public struct BundleData: BundleDataProtocol {
         
-        // MARK: - Properties
-        
-        public let identifier: String
-        public let version: String
-        public let build: String
-        public let name: String
-        
-        // MARK: - Setup
-        
-        public init(from bundle: Bundle = .main) {
-            identifier = bundle.bundleIdentifier ?? ""
-            version = bundle.infoDictionary?[kCFBundleInfoDictionaryVersionKey as String] as? String ?? ""
-            build = bundle.infoDictionary?[kCFBundleVersionKey as String] as? String ?? "0"
-            name = bundle.infoDictionary?[kCFBundleNameKey as String] as? String ?? ""
-        }
-    }
-    
     /** The platform of the machine */
     public enum Platform: String, Codable {
         
@@ -79,20 +61,7 @@ public struct AppInfo: Codable {
         return version.map { String($0) }.joined(separator: ".")
     }
     
-    /** Initializer
-     - parameter bundle: A bundle from which the app info should be extracted
-     */
-    public init(with info: BundleDataProtocol = BundleData()) {
-        version = info.version.components(separatedBy: ".").map { Int($0) ?? 0 }
-        build = Int(info.build) ?? 0
-        identifier = info.identifier
-        name = info.name
-        #if arch(i386) || arch(x86_64)
-        platform = .simulator
-        #else
-        platform = .device
-        #endif
-    }
+    public let appIcon: Data
 }
 
 // MARK: - Printable

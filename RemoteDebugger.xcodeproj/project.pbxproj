@@ -37,7 +37,6 @@
 		DD65E6DA245ED6C800F6A89F /* OldSessionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65E6D9245ED6C800F6A89F /* OldSessionsManager.swift */; };
 		DD6F23CC2447D86C0036B0B6 /* Set+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6F23CB2447D86C0036B0B6 /* Set+Extensions.swift */; };
 		DD6F23CE2447E7600036B0B6 /* InputMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6F23CD2447E7600036B0B6 /* InputMessage.swift */; };
-		DD788471244504C000E73E7C /* MyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD788470244504C000E73E7C /* MyWindow.swift */; };
 		DD78847D24450A7C00E73E7C /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78847B24450A7C00E73E7C /* Peer.swift */; };
 		DD78847E24450A7C00E73E7C /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78847C24450A7C00E73E7C /* NetworkServiceManager.swift */; };
 		DD7884812445181600E73E7C /* PeersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884802445181600E73E7C /* PeersManager.swift */; };
@@ -59,6 +58,16 @@
 		DD7884B524477F6E00E73E7C /* LogFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884AD24477F6E00E73E7C /* LogFilter.swift */; };
 		DD7884B624477F6E00E73E7C /* LogFilterContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884AE24477F6E00E73E7C /* LogFilterContainer.swift */; };
 		DD7884B724477F6E00E73E7C /* PathFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884AF24477F6E00E73E7C /* PathFilter.swift */; };
+		DD8D630E245F8E9800B008B0 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D630D245F8E9800B008B0 /* ProgressButton.swift */; };
+		DD8D63272460D0B600B008B0 /* BottomRadiusCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D63262460D0B600B008B0 /* BottomRadiusCorners.swift */; };
+		DD8D63522462EDA600B008B0 /* NearbyScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D63512462EDA600B008B0 /* NearbyScanner.swift */; };
+		DD8D63542462EEF900B008B0 /* NearbySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D63532462EEF900B008B0 /* NearbySession.swift */; };
+		DD8D635624631EAB00B008B0 /* NearbyDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D635524631EAB00B008B0 /* NearbyDevice.swift */; };
+		DD8D635C2463325E00B008B0 /* MCPeerID+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D635B2463325E00B008B0 /* MCPeerID+Extensions.swift */; };
+		DD8D635E2463F81900B008B0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8D635D2463F81900B008B0 /* Message.swift */; };
+		DDA1CEAF246A0AAF004AC510 /* ScrollableTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA1CEAE246A0AAE004AC510 /* ScrollableTextView.xib */; };
+		DDA1CEB1246A0B1A004AC510 /* ScrollableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA1CEB0246A0B1A004AC510 /* ScrollableTextView.swift */; };
+		DDA1CEB3246A0B66004AC510 /* ScrollTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA1CEB2246A0B66004AC510 /* ScrollTextView.swift */; };
 		DDBB9835244F4C9E0028E27C /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBB9834244F4C9E0028E27C /* TextView.swift */; };
 		DDBB9837244FA3DF0028E27C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBB9836244FA3DF0028E27C /* String+Extensions.swift */; };
 		DDBB983B244FBE090028E27C /* MacEditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBB983A244FBE090028E27C /* MacEditorTextView.swift */; };
@@ -149,7 +158,6 @@
 		DD65E6D9245ED6C800F6A89F /* OldSessionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSessionsManager.swift; sourceTree = "<group>"; };
 		DD6F23CB2447D86C0036B0B6 /* Set+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Extensions.swift"; sourceTree = "<group>"; };
 		DD6F23CD2447E7600036B0B6 /* InputMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessage.swift; sourceTree = "<group>"; };
-		DD788470244504C000E73E7C /* MyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWindow.swift; sourceTree = "<group>"; };
 		DD78847B24450A7C00E73E7C /* Peer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		DD78847C24450A7C00E73E7C /* NetworkServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		DD7884802445181600E73E7C /* PeersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeersManager.swift; sourceTree = "<group>"; };
@@ -171,6 +179,16 @@
 		DD7884AD24477F6E00E73E7C /* LogFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFilter.swift; sourceTree = "<group>"; };
 		DD7884AE24477F6E00E73E7C /* LogFilterContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFilterContainer.swift; sourceTree = "<group>"; };
 		DD7884AF24477F6E00E73E7C /* PathFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFilter.swift; sourceTree = "<group>"; };
+		DD8D630D245F8E9800B008B0 /* ProgressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
+		DD8D63262460D0B600B008B0 /* BottomRadiusCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRadiusCorners.swift; sourceTree = "<group>"; };
+		DD8D63512462EDA600B008B0 /* NearbyScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyScanner.swift; sourceTree = "<group>"; };
+		DD8D63532462EEF900B008B0 /* NearbySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbySession.swift; sourceTree = "<group>"; };
+		DD8D635524631EAB00B008B0 /* NearbyDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyDevice.swift; sourceTree = "<group>"; };
+		DD8D635B2463325E00B008B0 /* MCPeerID+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MCPeerID+Extensions.swift"; sourceTree = "<group>"; };
+		DD8D635D2463F81900B008B0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		DDA1CEAE246A0AAE004AC510 /* ScrollableTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollableTextView.xib; sourceTree = "<group>"; };
+		DDA1CEB0246A0B1A004AC510 /* ScrollableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextView.swift; sourceTree = "<group>"; };
+		DDA1CEB2246A0B66004AC510 /* ScrollTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTextView.swift; sourceTree = "<group>"; };
 		DDBB9834244F4C9E0028E27C /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DDBB9836244FA3DF0028E27C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		DDBB983A244FBE090028E27C /* MacEditorTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEditorTextView.swift; sourceTree = "<group>"; };
@@ -313,6 +331,7 @@
 		DD78847A24450A7300E73E7C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DD8D63502462ED7300B008B0 /* Network */,
 				DD78847C24450A7C00E73E7C /* NetworkServiceManager.swift */,
 				DD78847B24450A7C00E73E7C /* Peer.swift */,
 			);
@@ -364,6 +383,27 @@
 			path = Filters;
 			sourceTree = "<group>";
 		};
+		DD8D63502462ED7300B008B0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DD8D63512462EDA600B008B0 /* NearbyScanner.swift */,
+				DD8D63532462EEF900B008B0 /* NearbySession.swift */,
+				DD8D635524631EAB00B008B0 /* NearbyDevice.swift */,
+				DD8D635B2463325E00B008B0 /* MCPeerID+Extensions.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DDA1CEAD246A0A5A004AC510 /* ScrollableTextView */ = {
+			isa = PBXGroup;
+			children = (
+				DDA1CEAE246A0AAE004AC510 /* ScrollableTextView.xib */,
+				DDA1CEB2246A0B66004AC510 /* ScrollTextView.swift */,
+				DDA1CEB0246A0B1A004AC510 /* ScrollableTextView.swift */,
+			);
+			path = ScrollableTextView;
+			sourceTree = "<group>";
+		};
 		DDC7CACC244464A100F35624 /* Log */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +424,7 @@
 				DD78849E24473E9B00E73E7C /* TrackableScrollView */,
 				DDC7CADD2444680D00F35624 /* Extensions */,
 				DDC7CAD62444673000F35624 /* Printable.swift */,
+				DD8D630D245F8E9800B008B0 /* ProgressButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -421,7 +462,6 @@
 				DD65E6C5245D970800F6A89F /* TabsViewController.swift */,
 				DD65E6D5245E40C700F6A89F /* TabsViewModel.swift */,
 				DDC7CAE72444E2C000F35624 /* MainWindow.swift */,
-				DD788470244504C000E73E7C /* MyWindow.swift */,
 				DDC7CAE92444E90700F35624 /* PopupAppSelection.swift */,
 			);
 			path = Application;
@@ -430,6 +470,7 @@
 		DDE611312440F6A600A0972B /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				DDA1CEAD246A0A5A004AC510 /* ScrollableTextView */,
 				DD65E6B0245D961A00F6A89F /* LYTabView */,
 				DDE6112F2440F4C900A0972B /* ContentView.swift */,
 				DDE66258244143DE00AB5A34 /* LeftMenu.swift */,
@@ -451,6 +492,7 @@
 				DDBB9834244F4C9E0028E27C /* TextView.swift */,
 				DDBB983A244FBE090028E27C /* MacEditorTextView.swift */,
 				DD65E6CB245E108500F6A89F /* MenuSectionHeader.swift */,
+				DD8D63262460D0B600B008B0 /* BottomRadiusCorners.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -463,6 +505,7 @@
 				DD588DCA2458A70600539DAD /* SessionInfo.swift */,
 				DD588DCE2458A7F000539DAD /* AppInfo.swift */,
 				DD6F23CD2447E7600036B0B6 /* InputMessage.swift */,
+				DD8D635D2463F81900B008B0 /* Message.swift */,
 				DD588DCC2458A72F00539DAD /* OutputMessage.swift */,
 				DD65E6D3245E3ED400F6A89F /* SessionPresentableInfo.swift */,
 				DDE662E02443C1BB00AB5A34 /* LogModel.swift */,
@@ -586,6 +629,7 @@
 			files = (
 				DD27CBA32440F37800EF1F8C /* Assets.xcassets in Resources */,
 				DD27CBA62440F37800EF1F8C /* Main.storyboard in Resources */,
+				DDA1CEAF246A0AAF004AC510 /* ScrollableTextView.xib in Resources */,
 				DD65E6C4245D961B00F6A89F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,7 +685,9 @@
 				DD65E6D4245E3ED400F6A89F /* SessionPresentableInfo.swift in Sources */,
 				DD65E6C2245D961B00F6A89F /* LYTabBarView.swift in Sources */,
 				DD6F23CE2447E7600036B0B6 /* InputMessage.swift in Sources */,
+				DD8D63542462EEF900B008B0 /* NearbySession.swift in Sources */,
 				DD7884B324477F6E00E73E7C /* DateFilter.swift in Sources */,
+				DDA1CEB1246A0B1A004AC510 /* ScrollableTextView.swift in Sources */,
 				DD7884872445384F00E73E7C /* NSImage+Extensions.swift in Sources */,
 				DDBB983B244FBE090028E27C /* MacEditorTextView.swift in Sources */,
 				DDBB988424550D860028E27C /* NetworkLogDetailsView.swift in Sources */,
@@ -649,7 +695,6 @@
 				DD788485244522CF00E73E7C /* PeersTestData.swift in Sources */,
 				DD7884A224473E9B00E73E7C /* ScrollOffsetPreferenceKey.swift in Sources */,
 				DD7884B524477F6E00E73E7C /* LogFilter.swift in Sources */,
-				DD788471244504C000E73E7C /* MyWindow.swift in Sources */,
 				DDC7CACB2444646000F35624 /* Log.swift in Sources */,
 				DD7884B124477F6E00E73E7C /* FunctionFilter.swift in Sources */,
 				DD65E6D2245E32CD00F6A89F /* SessionManager.swift in Sources */,
@@ -658,8 +703,13 @@
 				DD78847E24450A7C00E73E7C /* NetworkServiceManager.swift in Sources */,
 				DD6F23CC2447D86C0036B0B6 /* Set+Extensions.swift in Sources */,
 				DDE662E12443C1BB00AB5A34 /* LogModel.swift in Sources */,
+				DDA1CEB3246A0B66004AC510 /* ScrollTextView.swift in Sources */,
+				DD8D63522462EDA600B008B0 /* NearbyScanner.swift in Sources */,
 				DDC7CAE32444682500F35624 /* Queue+Utils.swift in Sources */,
+				DD8D635624631EAB00B008B0 /* NearbyDevice.swift in Sources */,
+				DD8D630E245F8E9800B008B0 /* ProgressButton.swift in Sources */,
 				DDC7CAEA2444E90700F35624 /* PopupAppSelection.swift in Sources */,
+				DD8D635E2463F81900B008B0 /* Message.swift in Sources */,
 				DD65E6C6245D970800F6A89F /* TabsViewController.swift in Sources */,
 				DDE6625B2441443200AB5A34 /* LevelView.swift in Sources */,
 				DDE66259244143DE00AB5A34 /* LeftMenu.swift in Sources */,
@@ -680,12 +730,14 @@
 				DDC7CAE42444682500F35624 /* UUID+Get.swift in Sources */,
 				DD65E6C0245D961B00F6A89F /* NSView+extension.swift in Sources */,
 				DD588DCD2458A72F00539DAD /* OutputMessage.swift in Sources */,
+				DD8D635C2463325E00B008B0 /* MCPeerID+Extensions.swift in Sources */,
 				DDE611302440F4C900A0972B /* ContentView.swift in Sources */,
 				DD65E6BF245D961B00F6A89F /* NSImage+extension.swift in Sources */,
 				DDE662E52443C2CD00AB5A34 /* LogView.swift in Sources */,
 				DD78847D24450A7C00E73E7C /* Peer.swift in Sources */,
 				DDC7CAD3244464AC00F35624 /* Function.swift in Sources */,
 				DD65E6C8245D99BB00F6A89F /* NSColor+Extensions.swift in Sources */,
+				DD8D63272460D0B600B008B0 /* BottomRadiusCorners.swift in Sources */,
 				DDBB98412450899A0028E27C /* PeerView.swift in Sources */,
 				DDC7CAE52444682500F35624 /* Encodable+JSON.swift in Sources */,
 				DD65E6CC245E108500F6A89F /* MenuSectionHeader.swift in Sources */,

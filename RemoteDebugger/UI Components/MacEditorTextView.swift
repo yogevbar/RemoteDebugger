@@ -25,7 +25,8 @@ struct MacEditorTextView: NSViewRepresentable {
     func makeNSView(context: Context) -> CustomTextView {
         let textView = CustomTextView(text: self.text, isEditable: self.isEditable, font: self.font)
         textView.delegate = context.coordinator
-        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.autoresizingMask = [.width, .height]
         return textView
     }
     

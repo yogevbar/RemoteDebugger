@@ -14,7 +14,6 @@ struct ContentView: View {
     @EnvironmentObject private var session: SessionViewModel
     @EnvironmentObject private var toolBarManager: ToolBarManager
     @State private var selection: String?
-    @State private var showDetailsView = false
     
     var openSession: (_ sessionId: String) -> Void
     
@@ -30,8 +29,7 @@ struct ContentView: View {
                 }
                 .background(Color("background"))
                 .listStyle(SidebarListStyle())
-                .frame(minWidth: 190, idealWidth: 190, maxWidth: 220)
-                
+                .frame(minWidth: 190, idealWidth: 190, maxWidth: 220)                
             }
             HSplitView {
                 VStack(alignment: .leading) {
@@ -44,7 +42,7 @@ struct ContentView: View {
                 }
                 .padding(.top, 15)
                 .frame(minWidth: 400)
-                if !toolBarManager.showDetails && session.selectedLog != nil {
+                if toolBarManager.showDetails && session.selectedLog != nil {
                     LogDetails(log: session.selectedLog!)
                         .frame(minWidth: 200)
                 }
@@ -52,7 +50,7 @@ struct ContentView: View {
             }//.animation(.easeInOut)
             
         }
-        .frame(minWidth: 800, maxWidth: .infinity, minHeight: 600, maxHeight: .infinity)
+        .frame(minWidth: 1200, maxWidth: .infinity, minHeight: 800, maxHeight: .infinity)
     }
 }
 

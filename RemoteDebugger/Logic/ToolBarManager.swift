@@ -22,37 +22,30 @@ class ToolBarManager: ObservableObject {
     @Published var showDetails = false
     
     let showLeftView = PassthroughSubject<Bool, Never>()
+    let leftViewIsEnabled = PassthroughSubject<Bool, Never>()
     let showRightView = PassthroughSubject<Bool, Never>()
-    
+    let rightViewIsEnabled = PassthroughSubject<Bool, Never>()
+    let trashIsEnabled = PassthroughSubject<Bool, Never>()
     init() {
-        showLeftView
+        
+        rightViewIsEnabled.send(false)
+        showRightView.send(false)
+        showLeftView.send(false)
+        leftViewIsEnabled.send(false)
+        trashIsEnabled.send(false)
+        
+        Publishers.CombineLatest(showLeftView, leftViewIsEnabled)
+        .map{ $0 && $1 }
         .sink { [weak self] show in
             self?.showMenu = show
         }
         .store(in: &cancelSet)
         
-        showRightView
+        Publishers.CombineLatest(showRightView, rightViewIsEnabled)
+        .map { $0 && $1 }
         .sink { [weak self] show in
             self?.showDetails = show
         }
         .store(in: &cancelSet)
-
-//        NotificationCenter.default
-//        .publisher(for: .rightSidebarToggle)
-//        .compactMap { ($0.object as! Toggles) }
-//        .map { !$0.toggle }
-//        .sink { [weak self] collapse in
-//            self?.showDetails = collapse
-//        }
-//        .store(in: &cancelSet)
-//
-//        NotificationCenter.default
-//        .publisher(for: .leftSidebarToggle)
-//        .compactMap { ($0.object as! Toggles) }
-//        .map { !$0.toggle }
-//        .sink { [weak self] collapse in
-//            self?.showMenu = collapse
-//        }
-//        .store(in: &cancelSet)
     }
 }

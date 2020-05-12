@@ -55,7 +55,7 @@ struct LeftMenu: View {
                 MenuSectionHeader(showSection: $showSessions, title: "Previous Session", image: "history")
                     .padding(.top, 10)
                 if showSessions {
-                    ForEach(oldSessionsManager.oldSessions, id: \.id) { item in
+                    ForEach(oldSessionsManager.oldSessions.reversed(), id: \.id) { item in
                         Text(item.stringDate())
                         .onTapGesture {
                             self.openSession(item.id)

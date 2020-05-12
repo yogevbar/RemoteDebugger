@@ -10,18 +10,19 @@ import SwiftUI
 
 struct AppIconImage: View {
     
-    var image: NSImage?
+    var image: Data?
+    static let imageSize: CGFloat = 32
     
     var body: some View {
         ZStack {
             if image != nil {
-                Image(nsImage: image!)
+                Image(nsImage: (NSImage(data: image!) ?? NSImage(named: "noIcon"))!)
                 .resizable()
-                .frame(width: 64, height: 64)
+                    .frame(width: AppIconImage.imageSize, height: AppIconImage.imageSize)
             } else {
                 Image("noIcon")
                 .resizable()
-                .frame(width: 64, height: 64)
+                .frame(width: AppIconImage.imageSize, height: AppIconImage.imageSize)
             }
         }
     }

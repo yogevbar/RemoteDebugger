@@ -21,11 +21,7 @@ class SessionViewModel: ObservableObject {
         }
     }
     @Published var filteredLogs = [Log]()
-    @Published var selectedLog: Log? {
-        didSet {
-            NotificationCenter.default.post(name: .rightSidebarEnabled, object: Toggles(toggle: selectedLog != nil))
-        }
-    }
+    @Published var selectedLog: Log?
     private var cleanLogs = Set<String>() {
         didSet {
             update()

@@ -10,29 +10,30 @@ import SwiftUI
 
 struct AppSelectionView: View {
     
-    @ObservedObject private var viewModel = PeersManager()
+    @EnvironmentObject var peersManager: PeersManager
     
     var body: some View {
         VStack(alignment: .center) {
-            HStack {
-                Text("Discovered (\(viewModel.peers.count))")
-                Spacer()
-                Text("Can't see your app?")
-            }
-            if viewModel.peers.count == 0 {
+//            HStack {
+//                Text("Discovered (\(peersManager.availablePeers.count))")
+//                Spacer()
+//                Text("Can't see your app?")
+//            }
+//            .padding([.leading, .top, .trailing])
+            if peersManager.availablePeers.count == 0 {
                 Text("No appliction found.")
                     .font(.title)
                     .opacity(0.3)
                     .padding(35)
             } else {
-                HStack {
-                    ForEach(viewModel.peers) { peer in
+                List {
+                    ForEach(peersManager.availablePeers, id: \.self) { peer in
                         PeerView(peer: peer)
                     }
-                }
+                }.listStyle(SidebarListStyle())
             }
         }
-        .padding()
+        .padding(.top)
         .frame(width: 550)
     }
 }

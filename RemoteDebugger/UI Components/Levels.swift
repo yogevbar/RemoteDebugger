@@ -19,13 +19,13 @@ struct Levels: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            LevelView(isSelected: selectedLevels.isEmpty, title: "all", color: Color.white)
+            LevelView(isSelected: selectedLevels.isEmpty, title: "all", startColor: Color.white, endColor: Color.white)
                 .onTapGesture {
                     self.levelSelected(level: nil)
             }
             .padding(.leading, leadingSpace)
             ForEach(levels, id: \.name) { level in
-                LevelView(isSelected: self.selectedLevels.contains(level), title: level.name, color: Color(level.name))
+                LevelView(isSelected: self.selectedLevels.contains(level), title: level.name, startColor: Color("\(level.name)-start"), endColor: Color("\(level.name)-end"))
                     .onTapGesture {
                         self.levelSelected(level: level)
                 }

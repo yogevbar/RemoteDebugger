@@ -31,7 +31,7 @@ struct LogDetails: View {
     }
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: true) {
+//        ScrollView(.vertical, showsIndicators: true) {
             VStack {
                 Form {
                     Section(header: LogDetailsHeaderView(title: Keys.Sections.logDetails)){
@@ -53,7 +53,7 @@ struct LogDetails: View {
                 }
                 Spacer()
             }.padding()
-        }
+//        }
     }
     
     func containedView() -> AnyView {
