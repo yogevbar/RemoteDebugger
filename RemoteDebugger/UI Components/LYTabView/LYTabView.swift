@@ -20,6 +20,8 @@ public class LYTabView: NSView {
 
     //
     private let stackView: NSStackView = NSStackView(frame: .zero)
+    
+    public var currentItem: NSTabViewItem?
 
     /// delegate of LYTabView
     public var delegate: NSTabViewDelegate? {
@@ -39,6 +41,7 @@ public class LYTabView: NSView {
         tabView.delegate = tabBarView
         tabView.tabViewType = .noTabsNoBorder
         tabBarView.tabView = tabView
+        tabBarView.selectionDelegate = self
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(stackView)
@@ -133,5 +136,15 @@ public extension LYTabView {
 
     func takeSelectedTabViewItemFromSender(_ sender: AnyObject?) {
         self.tabView.takeSelectedTabViewItemFromSender(sender)
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        printView("key down")
+    }
+}
+
+extension LYTabView: LYTabBarViewDelegate {
+    func didSelectItem(tabViewItem: NSTabViewItem?) {
+        currentItem = tabViewItem
     }
 }

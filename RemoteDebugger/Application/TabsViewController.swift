@@ -101,6 +101,10 @@ class TabsViewController: NSViewController {
     
     func addViewWithLabel(_ label: String, sessionViewModel: SessionViewModel) {
         
+        defer {
+            resignFirstResponder()
+        }
+        
         if let tab = openTabs[label] {
             tabView.selectTabViewItem(tab)
             return
@@ -125,5 +129,50 @@ class TabsViewController: NSViewController {
     func clearLogsFromTabs() {
         guard let item = tabView.selectedTabViewItem, let vm = dataSource[item.label] else { return }
         vm.clearAllLogs()
+    }
+    
+    private func nextTab() {
+        if let currentItem = tabView.currentItem, currentItem == tabView.tabViewItems.last {
+            tabView.selectFirstTabViewItem(nil)
+        } else {
+            tabView.selectNextTabViewItem(nil)
+        }
+        
+    }
+    
+    private func prevTab() {
+        if let currentItem = tabView.currentItem, currentItem == tabView.tabViewItems.first {
+            tabView.selectLastTabViewItem(nil)
+        } else {
+            tabView.selectPreviousTabViewItem(nil)
+        }
+    }
+    
+    private func closeCurrentTab() {
+        guard let current = tabView.currentItem else { return }
+        tabView.removeTabViewItem(current)
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        if event.modifierFlags.contains([.shift, .command]) {
+            if returnChar(theEvent: event) == "]" {
+                nextTab()
+            }
+            
+            if returnChar(theEvent: event) == "[" {
+                prevTab()
+            }
+        } else {
+            super.keyDown(with: event)
+        }
+    }
+    
+    private func returnChar(theEvent: NSEvent!) -> Character?{
+        let s: String = theEvent.characters!
+        let mod = theEvent.modifierFlags
+        print(mod)
+        for char in s {
+            return char}
+        return nil
     }
 }

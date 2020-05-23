@@ -88,7 +88,7 @@ class MainWindow: NSWindowController {
             toolBarManager.trashIsEnabled.send(true)
             peerConnected()
         case .disconnected:
-            peerDisconnected()            
+            peerDisconnected()
         }
     }
     
@@ -149,7 +149,7 @@ class MainWindow: NSWindowController {
             openButton.imageScaling = .scaleProportionallyDown
         }
         openButton.alignment = .left
-        openButton.title = peer.displayName
+        openButton.title = "\(peer.displayName) - Connected"
     }
     
     @objc private func peerDisconnected() {

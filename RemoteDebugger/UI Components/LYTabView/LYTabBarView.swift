@@ -9,6 +9,10 @@
 import Foundation
 import Cocoa
 
+protocol LYTabBarViewDelegate: class {
+    func didSelectItem(tabViewItem: NSTabViewItem?)
+}
+
 public enum BarStatus {
     case active
     case windowInactive
@@ -21,6 +25,8 @@ public typealias ColorConfig = [BarStatus: NSColor]
 public class LYTabBarView: NSView {
     private let serialQueue = DispatchQueue(label: "Operations.TabBarView.UpdaterQueue")
     private var _needsUpdate = false
+    
+    weak var selectionDelegate: LYTabBarViewDelegate?
 
     @IBOutlet public weak var delegate: NSTabViewDelegate?
 
@@ -685,6 +691,7 @@ extension LYTabBarView: NSTabViewDelegate {
     public func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
         self.updateTabState()
         self.delegate?.tabView?(tabView, didSelect: tabViewItem)
+        self.selectionDelegate?.didSelectItem(tabViewItem: tabViewItem)
     }
 
     public func tabView(_ tabView: NSTabView, willSelect tabViewItem: NSTabViewItem?) {

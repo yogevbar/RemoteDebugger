@@ -37,8 +37,6 @@
 		DD65E6DA245ED6C800F6A89F /* OldSessionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65E6D9245ED6C800F6A89F /* OldSessionsManager.swift */; };
 		DD6F23CC2447D86C0036B0B6 /* Set+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6F23CB2447D86C0036B0B6 /* Set+Extensions.swift */; };
 		DD6F23CE2447E7600036B0B6 /* InputMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6F23CD2447E7600036B0B6 /* InputMessage.swift */; };
-		DD78847D24450A7C00E73E7C /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78847B24450A7C00E73E7C /* Peer.swift */; };
-		DD78847E24450A7C00E73E7C /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD78847C24450A7C00E73E7C /* NetworkServiceManager.swift */; };
 		DD7884812445181600E73E7C /* PeersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884802445181600E73E7C /* PeersManager.swift */; };
 		DD788485244522CF00E73E7C /* PeersTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD788484244522CF00E73E7C /* PeersTestData.swift */; };
 		DD7884872445384F00E73E7C /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7884862445384F00E73E7C /* NSImage+Extensions.swift */; };
@@ -158,8 +156,6 @@
 		DD65E6D9245ED6C800F6A89F /* OldSessionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSessionsManager.swift; sourceTree = "<group>"; };
 		DD6F23CB2447D86C0036B0B6 /* Set+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Extensions.swift"; sourceTree = "<group>"; };
 		DD6F23CD2447E7600036B0B6 /* InputMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessage.swift; sourceTree = "<group>"; };
-		DD78847B24450A7C00E73E7C /* Peer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
-		DD78847C24450A7C00E73E7C /* NetworkServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
 		DD7884802445181600E73E7C /* PeersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeersManager.swift; sourceTree = "<group>"; };
 		DD788484244522CF00E73E7C /* PeersTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeersTestData.swift; sourceTree = "<group>"; };
 		DD7884862445384F00E73E7C /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -332,8 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				DD8D63502462ED7300B008B0 /* Network */,
-				DD78847C24450A7C00E73E7C /* NetworkServiceManager.swift */,
-				DD78847B24450A7C00E73E7C /* Peer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -700,7 +694,6 @@
 				DD65E6D2245E32CD00F6A89F /* SessionManager.swift in Sources */,
 				DD7884812445181600E73E7C /* PeersManager.swift in Sources */,
 				DDC7CAE82444E2C000F35624 /* MainWindow.swift in Sources */,
-				DD78847E24450A7C00E73E7C /* NetworkServiceManager.swift in Sources */,
 				DD6F23CC2447D86C0036B0B6 /* Set+Extensions.swift in Sources */,
 				DDE662E12443C1BB00AB5A34 /* LogModel.swift in Sources */,
 				DDA1CEB3246A0B66004AC510 /* ScrollTextView.swift in Sources */,
@@ -734,7 +727,6 @@
 				DDE611302440F4C900A0972B /* ContentView.swift in Sources */,
 				DD65E6BF245D961B00F6A89F /* NSImage+extension.swift in Sources */,
 				DDE662E52443C2CD00AB5A34 /* LogView.swift in Sources */,
-				DD78847D24450A7C00E73E7C /* Peer.swift in Sources */,
 				DDC7CAD3244464AC00F35624 /* Function.swift in Sources */,
 				DD65E6C8245D99BB00F6A89F /* NSColor+Extensions.swift in Sources */,
 				DD8D63272460D0B600B008B0 /* BottomRadiusCorners.swift in Sources */,
