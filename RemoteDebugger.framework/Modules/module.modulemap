@@ -1,0 +1,11 @@
+framework module RemoteDebugger {
+  umbrella header "RemoteDebugger-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module RemoteDebugger.Swift {
+    header "RemoteDebugger-Swift.h"
+    requires objc
+}
