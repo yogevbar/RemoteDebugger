@@ -34,5 +34,7 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
+	<key>SUFeedURL</key>
+	<string>https://firebasestorage.googleapis.com/v0/b/remotedebugger-e433c.appspot.com/o/sparkletestcast.xml?alt=media&amp;token=09612b11-2845-4e11-9734-8ce4c0d6a276</string>
 </dict>
 </plist>
