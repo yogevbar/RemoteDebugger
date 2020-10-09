@@ -4,12 +4,12 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'RemoteDebugger'
+  s.name             = 'RemoteDebugger-SDK'
   s.version          = '0.1.0'
-  s.summary          = 'RemoteDebugger - View your logs in runtime.'
+  s.summary          = 'RemoteDebugger - View logs in runtime.'
   s.description      = <<-DESC
-RemoteDebugger is a new tool for view logs in runtime.
-This tool give you the option to add logs with different levels, tags and more. 
+RemoteDebugger allows you to view logs in runtime.
+RemoteDebugger-SDK - allows you to add logs with different destinations, levels, tags and more. 
                        DESC
   s.homepage         = 'https://github.com/yogevbar/RemoteDebugger'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
