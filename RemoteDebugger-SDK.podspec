@@ -13,7 +13,8 @@ RemoteDebugger-SDK - allows you to add logs with different destinations, levels,
                        DESC
   s.homepage         = 'https://github.com/yogevbar/RemoteDebugger'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  
+  s.license          = { :type => 'Apache', :file => 'LICENSE' }
   s.author           = { 'Yogev Barber' => 'yogevbarber@gmail.com' }
   s.source = { :http => 'https://firebasestorage.googleapis.com/v0/b/remotedebugger-e433c.appspot.com/o/RemoteDebugger%2Fv0.1.0%2FRemoteDebugger.framework.zip?alt=media&token=61bccc7f-a349-45e2-9a93-c3bff90da5bf' }
   s.swift_version    = '5'
